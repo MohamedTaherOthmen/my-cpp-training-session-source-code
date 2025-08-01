@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1754079986 source:/home/taher/Coding/C++/helloCpp/main.cpp
+	<iostream>
+	<sstream>
+
