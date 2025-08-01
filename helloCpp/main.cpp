@@ -137,7 +137,7 @@ int main()
         if (j == 2) {
             break;
         }
-        cout << "  This won't print after break\n";
+        cout << "  This won't print after j == 2\n";
     }
 
     // =============================================
