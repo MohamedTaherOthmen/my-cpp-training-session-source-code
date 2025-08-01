@@ -78,6 +78,12 @@ inline void printSquare(int x) {
 }
 
 // =============================================
+// DECLARING FUNCTIONS
+// =============================================
+void session();
+int return5(int);
+
+// =============================================
 // MAIN FUNCTION DEMONSTRATING ALL CONCEPTS
 // =============================================
 
@@ -133,5 +139,17 @@ int main() {
     // Multiple inline function calls
     cout << "Square of max between 3 and 9: " << square(maxValue(3, 9)) << endl;
 
+    // Declared functions
+    int a = return5(a);
+    session();
+    cout << "a = " << a << endl;
     return 0;
+}
+
+void session(){
+    cout << "This is a way on how we declare functions :)\n";
+}
+
+int return5(int a){
+    return 5;
 }

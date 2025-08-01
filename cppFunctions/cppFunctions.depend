@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1754092584 source:/home/taher/Coding/C++/cppFunctions/main.cpp
+	<iostream>
+	<string>
+
