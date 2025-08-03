@@ -1,9 +1,98 @@
 #include <iostream>
-
 using namespace std;
 
-int main()
-{
+int main() {
+    // =============================================
+    // BASIC POINTER OPERATIONS
+    // =============================================
+
+    // Clearer variable naming and initialization
+    int value = 5;          // Regular integer variable
+    int* pointer = nullptr; // Pointer initialized to null (best practice)
+    int dereferenced_value;  // Will store dereferenced pointer value
+
+    // Assign address of 'value' to pointer
+    pointer = &value;
+
+    cout << "Value of 'value': " << value << endl;
+    cout << "Address of 'value': " << &value << endl;
+    cout << "Value of 'pointer': " << pointer << " (same as address above)\n";
+    cout << "Address of 'pointer' itself: " << &pointer << endl;
+
+    // Dereferencing the pointer
+    dereferenced_value = *pointer;
+    cout << "Value pointed to by 'pointer': " << dereferenced_value << endl;
+
+    // Modifying value through pointer
+    *pointer = 10;
+    cout << "\nAfter modifying through pointer:\n";
+    cout << "New value of 'value': " << value << endl;
+    cout << "New dereferenced value: " << *pointer << endl;
+
+    // =============================================
+    // POINTER COMPARISONS
+    // =============================================
+
+    int another_value = 20;
+    int* another_pointer = &another_value;
+
+    cout << "pointer points to: " << pointer << endl;
+    cout << "another_pointer points to: " << another_pointer << endl;
+
+    // Comparing pointer addresses
+    if (pointer == another_pointer) {
+        cout << "Pointers point to the same address\n";
+    } else {
+        cout << "Pointers point to different addresses\n";
+    }
+
+    // Comparing values through pointers
+    if (*pointer == *another_pointer) {
+        cout << "Pointers point to equal values\n";
+    } else {
+        cout << "Pointers point to different values\n";
+    }
+
+    // =============================================
+    // POINTER TYPE SAFETY
+    // =============================================
+
+    double double_value = 3.14;
+    // int* int_ptr = &double_value; // This would be a compiler error
+
+    // Proper typed pointer
+    double* double_ptr = &double_value;
+    cout << "Properly typed pointer value: " << *double_ptr << endl;
+
+    // =============================================
+    // NULL vs nullptr
+    // =============================================
+
+    int* null_pointer = nullptr; // Modern C++ way (preferred)
+    // int* null_pointer = NULL;  // Older C-style (avoid in new code)
+    // int* null_pointer = 0;     // Also works but less clear
+
+    if (null_pointer == nullptr) {
+        cout << "Pointer is null (doesn't point to valid memory)\n";
+    }
+
+    // =============================================
+    // POINTER ARITHMETIC
+    // =============================================
+
+    int numbers[] = {10, 20, 30, 40, 50};
+    int* numbers_ptr = numbers; // Points to first element
+
+    cout << "First element: " << *numbers_ptr << endl;
+    numbers_ptr++; // Moves to next element
+    cout << "Second element: " << *numbers_ptr << endl;
+    numbers_ptr += 2; // Moves two elements forward
+    cout << "Fourth element: " << *numbers_ptr << endl;
+
+    // Calculating distance between pointers
+    int* first = &numbers[0];
+    int* last = &numbers[4];
+    cout << "Distance between first and last: " << (last - first) << " elements\n";
 
     return 0;
 }
