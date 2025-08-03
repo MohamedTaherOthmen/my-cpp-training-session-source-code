@@ -149,5 +149,15 @@ int main()
     int i = static_cast<int>(d); // C++ style cast
     cout << "Res conversion: " << d << " -> " << i << endl;
 
+    // char []
+    char tab[] = {'A', 'B', 'C', 'D', '\0'};
+    cout << tab << endl;
+    cin >> tab;
+    cout << tab << endl;
+    string tabString;
+    char tabString2[] = "Taher Othmen";
+    tabString = tabString2;
+    cout << tabString << endl;
+
     return 0;
 }
