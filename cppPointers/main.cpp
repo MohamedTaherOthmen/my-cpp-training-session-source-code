@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib> // for C memory handling malloc, realloc, free, calloc
+
 using namespace std;
 
 void assignPointerType(void *data, int psize);
@@ -186,6 +188,30 @@ int main() {
     // Alternative syntax
     int (*anotherFuncPtr)(int, int) = &functionWithPtr;
     cout << "Alternative syntax result: " << (*anotherFuncPtr)(m, n) << endl;
+
+    // =============================================
+    // Dynamic Memory
+    // =============================================
+    // pointer = new type
+    int *bobby;
+    bobby = new int[5];
+    // pointer throw an exception when there a an allocation fails
+    // it raises a bad_alloc exception
+    // we can force it to not raise an exception but return a nullptr
+    int *tommy;
+    tommy = new (nothrow) int[6];
+    if (tommy == nullptr){
+        cout << "Bad Alloc Exception for tommy variable" << endl;
+    }
+
+    // after we use memory for a pointer we should free it so it sill be accessible for other
+    // we delete the tommy[0]
+    delete tommy;
+    // we delete the bobby array :
+    delete []bobby;
+    // a null pointer, delete produces no effect
+
+
 
     return 0;
 }
