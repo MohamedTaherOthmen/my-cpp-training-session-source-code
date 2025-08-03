@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 
+void assignPointerType(void *data, int psize);
+int functionWithPtr(int a, int b);
+void demoFunctionPointer(int (*funcPtr)(int, int), int x, int y);
+
 int main() {
     // =============================================
     // BASIC POINTER OPERATIONS
@@ -94,5 +98,124 @@ int main() {
     int* last = &numbers[4];
     cout << "Distance between first and last: " << (last - first) << " elements\n";
 
+    // =============================================
+    // POINTER AND ARRAYS
+    // =============================================
+
+    int numbersArray[5] = {5, 2, 9, 8, 10};
+    int *firstelt = numbersArray, *secondelt;
+    secondelt = firstelt++;
+    cout << "first element of numbers array : " << *firstelt << endl;
+    cout << "second element of numbers array : " << *secondelt << endl;
+    *(numbersArray+4) = 12;
+    cout << "fourth element of numbers array : " << *(numbersArray+4) << endl;
+
+    // =============================================
+    // POINTERS AND STRINGS
+    // =============================================
+
+    // Note: const for string literals
+    const char* stringptr = "Hello Taher";
+
+    cout << "Full string: " << stringptr << endl;
+    cout << "First character: " << *stringptr << endl;
+    cout << "After post-increment: " << *(stringptr++) << " (now points to 'e')\n";
+    cout << "After += 2: " << *(stringptr += 2) << " (now points to 'l')\n";
+
+    // =============================================
+    // POINTER ARITHMETICS
+    // =============================================
+
+    int g = 15, h = 20;
+    int* po = &g;
+
+    // Dangerous operation - po+1 points to invalid memory!
+    cout << "*++po (invalid memory access): " << *++po << endl;
+
+    // Reset pointer to valid memory
+    po = &g;
+    cout << "Safe operations with defined behavior:\n";
+    cout << "Original value: " << *po << endl;
+    cout << "After (*po)++: " << (*po)++ << " (g is now " << g << ")\n";
+
+    // =============================================
+    // DOUBLE POINTERS
+    // =============================================
+
+    int val = 100;
+    int* single_ptr = &val;
+    int** double__ptr = &single_ptr;
+
+    cout << "val: " << val << endl;
+    cout << "single_ptr points to: " << *single_ptr << endl;
+    cout << "double_ptr points to single_ptr at: " << double__ptr << endl;
+    cout << "**double_ptr gives val: " << **double__ptr << endl;
+
+    // Modifying value through double pointer
+    **double__ptr = 200;
+    cout << "After modification through double pointer, val: " << val << endl;
+
+
+    // void pointers :
+    void * a;
+    assignPointerType(&a, sizeof(int));
+    assignPointerType(&a, sizeof(char));
+
+
+    // null pointer :
+    int * pointerr;
+    // p has a null pointer value
+    pointerr = 0;
+    pointerr = nullptr;
+
+    // =============================================
+    // POINTER TO FUNCTIONS
+    // =============================================
+
+    int m = 10, n = 5;
+
+    // Correct way to declare and initialize function pointer
+    int (*funcPtr)(int, int) = functionWithPtr;
+
+    // Using the function pointer
+    cout << "Calling through function pointer: " << funcPtr(m, n) << endl;
+
+    // Passing function pointer to another function
+    demoFunctionPointer(functionWithPtr, m, n);
+
+    // Alternative syntax
+    int (*anotherFuncPtr)(int, int) = &functionWithPtr;
+    cout << "Alternative syntax result: " << (*anotherFuncPtr)(m, n) << endl;
+
     return 0;
+}
+
+void assignPointerType(void *data, int psize){
+    switch (psize){
+        case sizeof(int):
+            int* pint;
+            pint = (int *) data;
+            cout << "It's an integer pointer and we did cast it" << endl;
+            break;
+        case sizeof(char):
+            char *pchar;
+            pchar = (char *) data;
+            cout << "It's a char pointer and we did cast it" << endl;
+            break;
+        default:
+            cout << "unknown pointer type !!" << endl;
+            break;
+    }
+}
+
+
+int functionWithPtr(int a, int b) {
+    cout << "Executing functionWithPtr with " << a << " and " << b << endl;
+    return a + b;
+}
+
+void demoFunctionPointer(int (*funcPtr)(int, int), int x, int y) {
+    cout << "Inside demoFunctionPointer: ";
+    int result = funcPtr(x, y);
+    cout << "Result: " << result << endl;
 }
