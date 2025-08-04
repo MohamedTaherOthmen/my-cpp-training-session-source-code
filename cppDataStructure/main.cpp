@@ -44,6 +44,11 @@ struct User {
     string name;
 } tab[TAB_WEIGHTS];
 
+// typedef : definition of a new type :
+// typedef can be useful to define an alias for a type that is frequently used within a program
+// typedef created only a synonyms of exciting types
+// typedef existing_type new_type_name ;
+typedef unsigned int ASCII;
 
 
 int main() {
