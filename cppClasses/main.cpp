@@ -125,5 +125,10 @@ int main() {
     Student amira(taher);
     amira.printCread();
 
+    // class pointers :
+
+
+    // class operations
+
     return 0;
 }
