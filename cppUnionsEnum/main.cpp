@@ -3,6 +3,7 @@ using namespace std;
 
 // Enum to identify data types
 enum class DataType { CHAR, INT, FLOAT, DOUBLE };
+enum colors { green, blue };
 
 // Regular union
 union NamedUnion {
@@ -37,6 +38,7 @@ struct WithAnonymousUnion {
 };
 
 int main() {
+
     // =============================================
     // Regular (named) union
     // =============================================
